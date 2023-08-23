@@ -1,3 +1,4 @@
+
 # Bài toán: Độ dài Sierpiński
 
 ### Link đề bài: https://open.kattis.com/problems/triangle
@@ -39,18 +40,28 @@ vậy có $3^n$ tam giác con, hay có $3 ^ n * 3 = 3^{n+1}$ cạnh (mỗi tam g
 
 Cách đơn giản nhất là tính trực tiếp $C(n)$, rồi in ra số chữ số của nó. Số chữ số của phần nguyên 1 số thập phân $x$ bất kỳ là $\lfloor log_{10}(x) \rfloor + 1$ 
 
-```python3
+```python
 def C(n: int) -> float:
 	return 3 ** (n + 1) / 2 ** n
 
 def sochusocuaC(n: int) -> int:
 	return floor(log10(C(n))) + 1
 ```
+
+```cpp
+long double C(int n){
+	return (long double)(pow(3, n + 1)) / pow(2, n);
+}
+
+int sochusocuaC(int n){
+	return floor(log10l(C(n))) + 1;
+}
+```
 ĐPT: $O(N)$
 
 Để tính các phép mũ nhanh hơn, ta có thể sử dụng [Lũy thừa nhanh](https://hackmd.io/@DeMen100ms/DeMenBlog3). Cần lưu ý là ta phải bỏ modulo đi do cần xử lý kết quả lớn.
 
-```python3
+```python
 def pow(a: int, b: int) -> int:
 	t = 1
 	while (b > 0):
@@ -64,13 +75,32 @@ def C(n: int) -> float:
 
 def sochusocuaC(n: int) -> int:
 	return floor(log10(C(n))) + 1
-``` 
+```
+
+```cpp
+long long pow(long long a, long long b){
+	long long t = 1;
+	while (b > 0){
+		if (b % 2 == 1) t *= a;
+		a = a * a;
+		b /= 2;
+	}
+}
+
+long double C(int n){
+	return (long double)(pow(3, n + 1)) / pow(2, n);
+}
+
+int sochusocuaC(int n){
+	return floor(log10l(C(n))) + 1;
+}
+```
 
 ĐPT: $O(log \ {n})$
 
 Chú ý rằng $\frac{3 ^ {n + 1}}{2 ^ n} = 3 * \frac{3^n}{2^n} = 3 * (\frac{3}{2})^n$, nên ta có thể thay đổi hàm `pow` để giảm số phép nhân và lần gọi hàm này.
 
-```python3
+```python
 def pow(a: float, b: int) -> float:
 	#lưu ý a lúc này là kiểu dữ liệu float
 	t = 1
@@ -86,6 +116,26 @@ def C(n: int) -> float:
 def sochusocuaC(n: int) -> int:
 	return floor(log10(C(n))) + 1
 ``` 
+```cpp
+long double pow(long double a, int b){
+	long double t = 1;
+	while (b > 0){
+		if (b % 2 == 1) t *= a;
+		a = a * a;
+		b /= 2;
+	}
+}
+
+long double C(int n){
+	return pow(3/2, n) * 3;
+}
+
+
+int sochusocuaC(int n){
+	return floor(log10l(C(n))) + 1;
+}
+```
+
 
 ĐPT: $O(log \ n)$
 
@@ -96,7 +146,7 @@ Tuy nhiên, cách này cần tính kết quả lớn, rất dễ bị tràn số
 Tuy chúng ta không thể tính được $C(n)$ một cách trực tiếp, nhưng chúng ta vẫn có thể tính được  $log_{10}(C(n))$. Chú ý rằng $$log_{10}{C(n)} = log_{10}{\frac{3 ^ {n + 1}}{2 ^ n}} = log_{10}{3^{n + 1}} - log_{10}{2^n} = (n + 1) * log_{10}3 - n * log_{10}2$$
 
 Từ đây, ta dễ dàng tính được phần còn lại. Đồng thời, để tránh máy tính lại các hằng số $log_{10}{3}$ và $log_{10}{2}$ nhiều lần, ta có thể đặt các hằng số cho các kết quả này.
-```python3
+```python
 lg3 = log10(3)
 lg2 = log10(2)
 
@@ -105,6 +155,14 @@ def sochusocuaC(n: int) -> int:
 	global lg3
 	global lg2
 	return floor((n + 1) * lg3 - n * lg2) + 1
+```
+
+```cpp
+const double lg3 = log10(3), lg2 = log10(2);
+
+int sochusocuaC(int n){
+	return floor((n + 1) * lg3 - n * lg2) + 1;
+}
 ```
 
 ĐPT: $O(1)$
