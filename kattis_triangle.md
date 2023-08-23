@@ -127,7 +127,7 @@ long double pow(long double a, int b){
 }
 
 long double C(int n){
-	return pow(3/2, n) * 3;
+	return (long double)pow(3/2, n) * 3;
 }
 
 
