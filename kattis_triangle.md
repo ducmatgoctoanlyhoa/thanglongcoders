@@ -47,7 +47,6 @@ def C(n: int) -> float:
 def sochusocuaC(n: int) -> int:
 	return floor(log10(C(n))) + 1
 ```
-
 ```cpp
 long double C(int n){
 	return (long double)(pow(3, n + 1)) / pow(2, n);
@@ -76,7 +75,6 @@ def C(n: int) -> float:
 def sochusocuaC(n: int) -> int:
 	return floor(log10(C(n))) + 1
 ```
-
 ```cpp
 long long pow(long long a, long long b){
 	long long t = 1;
@@ -156,7 +154,6 @@ def sochusocuaC(n: int) -> int:
 	global lg2
 	return floor((n + 1) * lg3 - n * lg2) + 1
 ```
-
 ```cpp
 const double lg3 = log10(3), lg2 = log10(2);
 
