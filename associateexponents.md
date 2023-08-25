@@ -4,7 +4,7 @@
 
 ## Đề bài: 
 
->Cho 3 số tự nhiên $a, b, c$ thỏa mãn $1 \leq a, b, c \leq, 2*10^6$, hỏi $(a^b)^c$ và $a^{b^c}$ có bằng nhau không?
+>Cho 3 số tự nhiên $a, b, c$ thỏa mãn $1 \leq a, b, c \leq 2*10^6$, hỏi $(a^b)^c$ và $a^{b^c}$ có bằng nhau không?
 
 ## Giải
 
@@ -84,7 +84,7 @@ if (a == 1){
 Với các trường hợp $a \neq 1$, vấn đề phức tạp hơn. Chúng ta quay lại ý tưởng trước, xét $b^c = bc$. Nhưng làm thế nào để kiểm chứng tính đúng đắn của phép tính này? Ta có thể giải phương trình đa thức $b^c - bc$ theo $b$ lấy $c$ làm tham số, nhưng cách này sẽ rất phức tạp (còn về làm thế nào để giải một đa thức mình sẽ viết sau). Thay vào đó, chúng ta sẽ suy luận theo một hướng khác. Đặt $c = b^k$, ta có
 
 $$ 
-b^c = bc \\ b^{b^k} = b*b^k \\ log_{b}(b^{b^k}) = log_{b}{(b*b^k)} \\ b^k = 1 + k \\ b = \sqrt[k]{1 + k}$$
+b^c = bc \\ b^{b^k} = b*{b^k} \\ log_{b}(b^{b^k}) = log_{b}{(b*b^k)} \\ b^k = 1 + k \\ b = \sqrt[k]{1 + k}$$
 
 và $b$ là một số tự nhiên, nên chỉ có $k = 1$ thỏa mãn. Khi đó $b = \sqrt[1]{1 + 1} = 2$ và $c = b^k = 2$. Do đó, ta chỉ cần xét tính đúng đắn của $b = 2$ và $c = 2$
 
