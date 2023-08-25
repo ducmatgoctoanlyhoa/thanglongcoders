@@ -86,7 +86,7 @@ Với các trường hợp $a \neq 1$, vấn đề phức tạp hơn. Chúng ta 
 $$ 
 b^c = bc \\
 b^{b^k} = b*b^k \\
-log_b(b^{b^k}) = log_{b}{(b*b^k)} \\
+log_{b}(b^{b^k}) = log_{b}{(b*b^k)} \\
 b^k = 1 + k \\
 b = \sqrt[k]{1 + k}
 $$
