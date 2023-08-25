@@ -90,6 +90,7 @@ log_{b}(b^{b^k}) = log_{b}{(b*b^k)} \\
 b^k = 1 + k \\
 b = \sqrt[k]{1 + k}
 $$
+
 và $b$ là một số tự nhiên, nên chỉ có $k = 1$ thỏa mãn. Khi đó $b = \sqrt[1]{1 + 1} = 2$ và $c = b^k = 2$. Do đó, ta chỉ cần xét tính đúng đắn của $b = 2$ và $c = 2$
 
 ```python
